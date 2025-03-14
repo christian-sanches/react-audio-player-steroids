@@ -18,7 +18,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       barPlayedColor="#99A98F"
 
       skipDuration={2}
-      showLoopOption={true}
+      showLoopOption={false}
+      showPlaybackSpeed
       showVolumeControl={true}
       onended={() => console.log("ENDED")}
       // seekBarColor="purple"

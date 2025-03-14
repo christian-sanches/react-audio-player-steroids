@@ -4,10 +4,10 @@ import { AudioVisualizer } from "react-audio-visualize";
 import AudioControls from "./AudioControls";
 import TrackBar from "./TrackBar";
 
-import volumeSVG from "../icons/volume.svg";
 import muteSVG from "../icons/mute.svg";
-import repeatSVG from "../icons/repeat.svg";
 import repeatOneSVG from "../icons/repeat-one.svg";
+import repeatSVG from "../icons/repeat.svg";
+import volumeSVG from "../icons/volume.svg";
 import Timer from "./Timer";
 
 interface AudioElementNativeProps {
@@ -120,6 +120,10 @@ interface AudioPlayerProps {
    */
   showLoopOption?: boolean;
   /**
+   * Represents wether to show the playback speed control. Defaults to `false`
+   */
+  showPlaybackSpeed?: boolean;
+  /**
    * Represents whether the volume control should be shown. Defaults to `true`
    */
   showVolumeControl?: boolean;
@@ -140,6 +144,8 @@ interface AudioPlayerProps {
    */
   hideSeekKnobWhenPlaying?: boolean;
 }
+
+const rates = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0];
 
 const AudioPlayer: React.FC<
   AudioElementNativeProps & AudioElementEventProps & AudioPlayerProps
@@ -189,6 +195,7 @@ const AudioPlayer: React.FC<
   allowSkip = true,
   skipDuration = 5,
   showLoopOption = true,
+  showPlaybackSpeed = false,
   showVolumeControl = true,
   seekBarColor,
   volumeControlColor,
@@ -201,6 +208,7 @@ const AudioPlayer: React.FC<
   const [duration, setDuration] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [internalVolume, setVolume] = useState<number>(volume);
+  const [internalPlaybackRate, setPlaybackRate] = useState<number>(playbackRate);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [isLoop, setIsLoop] = useState<boolean>(loop);
 
@@ -328,6 +336,10 @@ const AudioPlayer: React.FC<
     setAudioTime(time);
   };
 
+  useEffect(() => {
+    audio.playbackRate = internalPlaybackRate;
+  }, [internalPlaybackRate]);
+
   // const seekStart = () => {
   //   audio?.pause()
   // }
@@ -433,6 +445,33 @@ const AudioPlayer: React.FC<
                 width: 16,
               }}
             />
+          )}
+          {showPlaybackSpeed && (
+            <div
+              style={{
+                display: "flex",
+                // gap: 8,
+                justifySelf: "flex-start",
+                width: 80,
+              }}
+            >
+              <button 
+                onClick={() => {
+                  setPlaybackRate((rate) => {
+                    const index = rates.indexOf(rate);
+                    return rates[(index + 1) % rates.length]
+                  })
+                }}
+                style={{
+                  background: "none",
+                  borderRadius: ".5rem",
+                  padding: ".1rem 0.5rem",
+                  cursor: "pointer",
+                }}
+              >
+                {internalPlaybackRate.toFixed(2)}x
+              </button>
+            </div>
           )}
           <AudioControls
             isPlaying={isPlaying}

@@ -1,12 +1,12 @@
 {
-  "name": "react-audio-player-component",
+  "name": "react-audio-player-steroids",
   "private": false,
-  "version": "1.2.4",
+  "version": "1.0.0",
   "license": "MIT",
-  "author": "Samhir Tarif",
+  "author": "Christian Sanches",
   "repository": {
     "type": "git",
-    "url": "https://github.com/samhirtarif/react-audio-player.git"
+    "url": "https://github.com/christian-sanches/react-audio-player-steroids.git"
   },
   "keywords": [
     "react",
@@ -16,7 +16,7 @@
     "react-audio-playback",
     "react-voice-player",
     "react-voice-playback",
-    "react-audio-player-component",
+    "react-audio-player-steroids",
     "react audio player",
     "react audio playback",
     "react voice player",
@@ -35,13 +35,13 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/react-audio-player-component.umd.js",
-  "module": "./dist/react-audio-player-component.es.js",
+  "main": "./dist/react-audio-player-steroids.umd.js",
+  "module": "./dist/react-audio-player-steroids.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-audio-player-component.es.js",
-      "require": "./dist/react-audio-player-component.umd.js"
+      "import": "./dist/react-audio-player-steroids.es.js",
+      "require": "./dist/react-audio-player-steroids.umd.js"
     }
   },
   "scripts": {
