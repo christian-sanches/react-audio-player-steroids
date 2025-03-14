@@ -1,5 +1,5 @@
-# **react-audio-player-component**
-A mobile-friendly audio player for React with a modern look and convenient usage.
+# **react-audio-player-steroids.**
+A mobile-friendly audio player for React with a modern look and convenient usage. But, with steroids.
 
 [![NPM downloads][npm-download-img]][npm-download-url]
 [![Run ESlint][eslint-img]][eslint-url]
