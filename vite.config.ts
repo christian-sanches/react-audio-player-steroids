@@ -1,6 +1,6 @@
+import path from "path"
 import { defineConfig } from 'vite'
 import dts from "vite-plugin-dts"
-import path from "path"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +14,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'AudioPlayer',
-      fileName: (format) => `react-audio-player-component.${format}.js`
+      fileName: (format) => `react-audio-player-steroids.${format}.js`
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
