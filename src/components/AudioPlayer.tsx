@@ -208,7 +208,8 @@ const AudioPlayer: React.FC<
   const [duration, setDuration] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [internalVolume, setVolume] = useState<number>(volume);
-  const [internalPlaybackRate, setPlaybackRate] = useState<number>(playbackRate);
+  const [internalPlaybackRate, setPlaybackRate] =
+    useState<number>(playbackRate);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [isLoop, setIsLoop] = useState<boolean>(loop);
 
@@ -261,6 +262,7 @@ const AudioPlayer: React.FC<
 
     return () => {
       // clean up
+      audio.pause();
       audio.removeEventListener("ended", onAudioEnded);
     };
   }, []);
@@ -455,12 +457,12 @@ const AudioPlayer: React.FC<
                 width: 80,
               }}
             >
-              <button 
+              <button
                 onClick={() => {
                   setPlaybackRate((rate) => {
                     const index = rates.indexOf(rate);
-                    return rates[(index + 1) % rates.length]
-                  })
+                    return rates[(index + 1) % rates.length];
+                  });
                 }}
                 style={{
                   background: "none",
